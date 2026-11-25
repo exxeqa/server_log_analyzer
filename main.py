@@ -1,3 +1,5 @@
+from generator import logs_gen_menu
+
 def start():
     while True:
         try:

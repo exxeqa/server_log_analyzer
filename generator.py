@@ -43,7 +43,7 @@ def delay_generator():
         delay = random.randint(111, 300)
     return str(delay)
 
-def log_generator(generations_amount):
+def logs_generator(generations_amount):
     logs = []
     for log in range(generations_amount):
         time = time_generator()
@@ -65,4 +65,7 @@ def log_generator(generations_amount):
         for log in logs:
             file.write(f"{log}\n")
 
-log_generator(5)
+def logs_gen_menu():
+    generations_amount = 0
+    generations_amount += int(input(f"choose how many logs you want to generate"))
+    logs_generator(generations_amount)
