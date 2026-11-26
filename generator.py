@@ -38,7 +38,7 @@ def delay_generator():
     if delay_rare <= 6:
         delay = random.randint(40, 110)
     elif delay_rare == 7:
-        delay = random.randint(1, 39)
+        delay = random.randint(10, 39)
     else:
         delay = random.randint(111, 300)
     return str(delay)
@@ -51,7 +51,7 @@ def logs_generator(generations_amount):
         ip = ip_generator()
         r_code = response_generator()
         command = command_generator()
-        delay = delay_generator()
+        delay = delay_generator() + "ms"
 
         log_comp = [time, ip, command, r_code, delay]
 
