@@ -1,5 +1,7 @@
 with open(r"C:\server_log_analyzer\data\logs.txt", "r") as file:
     logs = file.readlines()
+with open(r"C:\server_log_analyzer\data\logs_stat.txt", "w") as f:
+    pass
 
 #2025-11-27 05:32:19 | 126.17.12.84 | /home | 503 | 110ms --- log_example
 
@@ -28,7 +30,6 @@ def parser():
             commands[command] += 1
         ping_c = log[4]
         ping_c = ping_c[:-3]
-        print(ping_c)
         if int(ping_c) <= 39:
             ping["10-39ms"] += 1
         elif int(ping_c) <= 110:
@@ -36,8 +37,6 @@ def parser():
         else:
             ping["110+ms"] += 1
     with open(r"C:\server_log_analyzer\data\logs_stat.txt", "a") as logs_stat_file:
-        `
-
-
+        logs_stat_file.write(f"{response_codes}\n{commands}\n{ping}")
 
 parser()
