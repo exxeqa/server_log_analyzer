@@ -5,9 +5,6 @@ TimeB = datetime.now()
 TimeB -= timedelta(weeks=52)
 TimeB = TimeB.replace(microsecond=0)
 
-with open(r"C:\server_log_analyzer\data\logs.txt", "w") as file:
-    pass
-
 def ip_generator():
     field = []
     for i in range(4):
@@ -45,6 +42,8 @@ def delay_generator():
 
 def logs_generator(generations_amount):
     logs = []
+    with open(r"C:\server_log_analyzer\data\logs.txt", "w") as f:
+        pass
     for log in range(generations_amount):
         time = time_generator()
         time = str(time)

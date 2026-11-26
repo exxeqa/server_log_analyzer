@@ -1,19 +1,22 @@
-with open(r"C:\server_log_analyzer\data\logs.txt", "r") as file:
-    logs = file.readlines()
-with open(r"C:\server_log_analyzer\data\logs_stat.txt", "w") as f:
-    pass
 
 #2025-11-27 05:32:19 | 126.17.12.84 | /home | 503 | 110ms --- log_example
 
-response_codes, commands = {}, {}
-ping = {
-    "10-39ms": 0,
-    "40-110ms": 0,
-    "110+ms": 0
-}
+def stat_res():
+    global response_codes, commands, ping
+    response_codes, commands = {}, {}
+    ping = {
+        "10-39ms": 0,
+        "40-110ms": 0,
+        "110+ms": 0
+    }
 
 def parser():
     global response_codes, commands, ping
+    with open(r"C:\server_log_analyzer\data\logs.txt", "r") as file:
+        logs = file.readlines()
+    with open(r"C:\server_log_analyzer\data\logs_stat.txt", "w") as f:
+        pass
+    stat_res()
     for log in logs:
         log = log.split(" | ")
         r_code = log[3]
@@ -38,5 +41,3 @@ def parser():
             ping["110+ms"] += 1
     with open(r"C:\server_log_analyzer\data\logs_stat.txt", "a") as logs_stat_file:
         logs_stat_file.write(f"{response_codes}\n{commands}\n{ping}")
-
-parser()
