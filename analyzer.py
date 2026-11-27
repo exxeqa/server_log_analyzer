@@ -10,7 +10,7 @@ def ip_check(logs):
         count = ips.count(ip)
         if count > 1:
             ip_y[ip] = count
-    return ip_y        
+    return ip_y
 
 def error_codes(logs_stat):
     logs_stat = ast.literal_eval(logs_stat)
@@ -28,6 +28,9 @@ def analyzer():
     with open(r"C:\server_log_analyzer\data\logs_stat.txt", "r") as file:
         logs_stat = file.readlines()
     error_codes(logs_stat[0])
+    with open(r"C:\server_log_analyzer\data\statistic.txt", "w") as f:
+        for i in
+
 
 
 analyzer()
